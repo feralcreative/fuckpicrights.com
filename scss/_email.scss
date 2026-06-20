@@ -1,0 +1,180 @@
+@use 'variables' as *;
+
+// =====================================================================
+// Email innards — raw metadata header, prose body, evidence, bank block
+// Monospace on the technical bits gives the "case file" edge.
+// =====================================================================
+.email { overflow-wrap: anywhere; }
+
+// --- letterhead (sender + client logos on PicRights emails) ---
+.email__letterhead {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $line;
+
+  img { display: block; width: auto; }
+}
+
+// --- From / To / Subject ---
+.email__meta {
+  margin: 0 0 1.15rem;
+  padding: 0.65rem 0.85rem;
+  background: $paper-alt;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+  font-family: $mono;
+  font-size: 0.8rem;
+  line-height: 1.5;
+
+  > div {
+    display: flex;
+    gap: 0.7rem;
+    & + div { margin-top: 0.2rem; }
+  }
+
+  dt {
+    flex: 0 0 4rem;
+    color: $muted;
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-top: 0.18rem;
+  }
+
+  dd { margin: 0; color: $ink; }
+}
+
+// --- prose body ---
+.prose {
+  color: $graphite;
+
+  p { margin: 0 0 0.9rem; }
+  p:last-child { margin-bottom: 0; }
+
+  ul {
+    margin: 0 0 0.9rem;
+    padding-left: 1.25rem;
+  }
+  li { margin: 0.3rem 0; }
+
+  h3 {
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: $ink;
+  }
+  h3:first-child { margin-top: 0; }
+}
+
+// the FAQ payoff line
+.prose__punch {
+  margin: 1.2rem 0 0.4rem !important;
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: $brand-red;
+}
+
+.prose__signoff,
+.email__sig { font-weight: 700; color: $ink; }
+
+// letterhead address line + legal fine print — quieter than the body
+.email__hdrline,
+.email__fineprint {
+  font-size: 0.82rem;
+  color: $muted;
+}
+.email__fineprint { line-height: 1.5; }
+
+// wire-transfer details — a raw monospace slab
+.email__bank {
+  font-family: $mono;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  background: $paper-alt;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+  padding: 0.8rem 0.9rem;
+}
+
+// inline emoji
+.emoji {
+  display: inline-block;
+  height: 1.1em;
+  width: auto;
+  vertical-align: -0.2em;
+  margin-left: 0.1em;
+}
+
+// the parody-logo reveal in Reply #4
+.email__figure {
+  margin: 1.1rem 0;
+  text-align: center;
+
+  img {
+    width: clamp(200px, 60%, 340px);
+    height: auto;
+    margin: 0 auto;
+  }
+}
+
+// =====================================================================
+// Evidence ("DETAILS") blocks
+// =====================================================================
+.evidence {
+  margin-top: 1.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px dashed $line;
+}
+
+.evidence__title {
+  margin: 0 0 0.9rem;
+  font-family: $mono;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: $muted;
+}
+
+.evidence__item { margin-bottom: 1.4rem; &:last-child { margin-bottom: 0; } }
+
+.evidence__cat {
+  margin: 0 0 0.55rem;
+  font-family: $mono;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $ink;
+}
+
+.evidence__pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+
+  figure {
+    flex: 1 1 14rem;
+    min-width: 0;
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border: 1px solid $line;
+    border-radius: $radius-sm;
+    background: $paper-alt;
+  }
+
+  figcaption {
+    margin-top: 0.4rem;
+    font-family: $mono;
+    font-size: 0.68rem;
+    line-height: 1.45;
+    color: $muted;
+    overflow-wrap: anywhere;
+  }
+}

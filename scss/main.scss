@@ -1,0 +1,11 @@
+// =====================================================================
+// FuckPicRights.com — main stylesheet entry point
+// Build:  npx sass scss/main.scss style.css
+// Watch:  npx sass --watch scss/main.scss style.css
+// Prod:   npx sass scss/main.scss style.css --style=compressed --no-source-map
+// =====================================================================
+@use 'variables';
+@use 'base';
+@use 'layout';
+@use 'timeline';
+@use 'email';

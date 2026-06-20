@@ -1,0 +1,7 @@
+services:
+  web:
+    image: fuckpicrights:latest
+    container_name: fuckpicrights
+    ports:
+      - "4317:80"
+    restart: unless-stopped

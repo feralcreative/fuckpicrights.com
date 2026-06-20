@@ -1,0 +1,16 @@
+{
+  "name": "fuckpicrights.com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static archive of an email exchange with copyright troll PicRights.",
+  "author": "Ziad Ezzat",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "sass scss/main.scss style.css --style=compressed --no-source-map",
+    "dev": "sass --watch scss/main.scss style.css",
+    "serve": "npx --yes http-server -p 4317 -c-1 ."
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

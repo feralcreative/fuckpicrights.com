@@ -1,0 +1,10 @@
+.git
+_archive
+node_modules
+utils
+docs
+*.md
+.DS_Store
+.env
+*.tar.gz
+.claude

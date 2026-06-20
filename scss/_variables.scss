@@ -1,0 +1,40 @@
+// =====================================================================
+// Design tokens — FuckPicRights.com
+// Palette pulled from ziad.ezzat.com + the FuckPicRights logo artwork.
+// Only colors defined here are used anywhere in the stylesheet.
+// =====================================================================
+
+// --- ziad.ezzat.com palette ---
+$blue:       #03a9f4; // Ziad's voice / reason — dot + card border
+$blue-deep:  #0277b6; // accessible white-on-blue for the tag chip
+$orange:     #ff9800;
+$gold:       #fbc02d;
+$purple:     #8c239f;
+$pink:       #ff3369; // irreverent accent — links, active states
+
+// --- FuckPicRights logo artwork ---
+$brand-red:  #ff000c; // the raised finger — reserved for the wordmark
+$brand-red-2:#b90009;
+$brand-green:#40b03c; // the aperture
+
+// --- neutrals ---
+$ink:        #1a1a1a; // near-black body text
+$graphite:   #343a40; // PicRights' restrained voice
+$muted:      #5c6066; // captions, meta, fine print
+$line:       #e6e6e8; // hairlines
+$paper:      #ffffff;
+$paper-alt:  #f6f6f6;
+
+// --- type ---
+$font:  'Raleway', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+$mono:  ui-monospace, 'SF Mono', SFMono-Regular, Menlo, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+
+// --- radius & shadow ---
+$radius:      0.6rem;
+$radius-sm:   0.4rem;
+$shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 14px 32px -22px rgba(0, 0, 0, 0.28);
+
+// --- breakpoints ---
+$bp-narrow: 40rem; // 640px
+$bp-mid:    60rem; // 960px — timeline gains its date gutter
+$bp-wide:   78rem; // 1248px — table of contents becomes a sticky sidebar

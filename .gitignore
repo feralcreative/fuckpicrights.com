@@ -126,6 +126,9 @@ storybook-static/
 *.css
 *.min.css
 *.css.map
+# Exception: this static site ships its compiled stylesheet so it can be
+# deployed by simply uploading the folder (SFTP) with no build step.
+!/style.css
 
 
 # Database files
@@ -210,6 +213,7 @@ junit.xml
 
 # Docker
 .dockerignore
+!/.dockerignore
 Dockerfile.dev
 docker-compose.override.yml
 .docker/
