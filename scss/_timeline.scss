@@ -45,7 +45,7 @@
   border-radius: 50%;
   background: var(--accent);
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 4px $paper, 0 0 0 6px rgba($graphite, 0.12);
+  box-shadow: 0 0 0 3px $paper;
   z-index: 1;
 }
 
@@ -60,21 +60,47 @@
   color: $muted;
 }
 
-// card
+// card — a collapsible <details> (collapsed by default; FAQ is [open])
 .entry__card {
   background: $paper;
   border: 1px solid $line;
   border-left: 4px solid var(--accent);
   border-radius: $radius;
-  padding: 1.4rem 1.5rem;
   box-shadow: $shadow-card;
-  overflow-wrap: anywhere;
+  overflow: hidden; // clip the rounded corners around summary/body
 }
 
+// summary — the clickable header: tag + title, with a chevron affordance
 .entry__head {
-  margin-bottom: 1.1rem;
-  padding-bottom: 0.9rem;
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 1.15rem 3rem 1.15rem 1.5rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &::-webkit-details-marker { display: none; }
+  &:hover { background: rgba($graphite, 0.035); }
+
+  // chevron (points down when collapsed, up when open)
+  &::after {
+    content: '';
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid $muted;
+    border-bottom: 2px solid $muted;
+    transform: translateY(-65%) rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+}
+
+.entry__card[open] .entry__head {
   border-bottom: 1px solid $line;
+
+  &::after { transform: translateY(-35%) rotate(225deg); }
 }
 
 .entry__tag {
@@ -92,40 +118,70 @@
 }
 
 .entry__title {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: $ink;
+}
+
+// expanded body
+.entry__body {
+  padding: 1.3rem 1.5rem 1.5rem;
+  overflow-wrap: anywhere;
+}
+
+// "Next" / "Back to top" control at the bottom of each entry
+.entry__next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.6rem;
+  padding: 0.6rem 1.15rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: var(--tag-bg);
+  border: 0;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+
+  &:hover { filter: brightness(1.12); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 }
 
 // the intro (FAQ) gets a touch more presence
 .entry--intro .entry__card {
   background: linear-gradient(180deg, rgba($brand-green, 0.05), $paper 40%);
 }
-.entry--intro .entry__title { font-size: 1.7rem; }
+.entry--intro .entry__title { font-size: 1.55rem; }
 
 // =====================================================================
 // Desktop: lift the date into a left-hand margin beside the spine
 // =====================================================================
 //@ Mid: timeline gains a dedicated date gutter
 @media (min-width: $bp-mid) {
-  .thread::before { left: 7rem; }
+  .thread::before { left: 6rem; }
 
   .entry {
-    padding-left: 8.5rem;
+    padding-left: 7.25rem;
   }
 
   .entry__dot {
-    left: 7rem;
+    left: 6rem;
     top: 1.65rem;
   }
 
   .entry__date {
     position: absolute;
     left: 0;
-    top: 1.15rem;
-    width: 6rem;
+    top: 1.2rem;
+    width: 5.4rem;
     margin: 0;
-    padding-right: 1.15rem;
+    padding-right: 0.7rem;
     text-align: right;
+    font-size: 0.66rem;
+    letter-spacing: 0;
+    white-space: nowrap;
   }
 }

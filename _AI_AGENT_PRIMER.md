@@ -25,8 +25,9 @@ they should stay clearly distinct from the correspondence.
 ## Stack & conventions
 
 - **No framework, no SSG, no runtime JS dependency.** Plain `index.html` + one
-  compiled `style.css`. A tiny inline progressive-enhancement script handles TOC
-  highlighting and the back-to-top button; the page works fully without it.
+  compiled `style.css`. A tiny inline progressive-enhancement script handles the
+  accordion "Next" buttons, the live FAQ date, and the back-to-top button; the
+  page works fully without it (entries are native `<details>`).
 - **Styles:** SCSS in `scss/`, compiled with Dart Sass via `npx sass`
   (never via an IDE extension). Partials use `@use`. Entry point is
   `scss/main.scss`.
@@ -34,7 +35,7 @@ they should stay clearly distinct from the correspondence.
   the `ziad.ezzat.com` palette plus the logo's red/green. Don't introduce ad-hoc
   hex values.
 - **Media queries:** each `@media` block is preceded by a `//@ Label` comment.
-- **Fonts:** Raleway is self-hosted as a variable woff2 in `assets/fonts/`
+- **Fonts:** Inter is self-hosted as a variable woff2 in `assets/fonts/`
   (one file spans weights 100–900). No CDN — the site must work offline.
 
 ## Layout model
@@ -46,12 +47,17 @@ The thread is a `<ol class="thread">` of 11 `<li class="entry">` nodes (FAQ +
   sets `--accent` used by the spine dot, card border, and tag;
 - has a `.entry__marker` (spine dot + date) that sits in a left gutter on wide
   screens and collapses to a chip above the card on mobile;
-- contains an `.email` block: optional `.email__letterhead` (sender/client
-  logos), an `.email__meta` From/To/Subject header, a `.prose` body, and
-  optional `.evidence` (DETAILS) image pairs.
+- is a `<details class="entry__card">` (collapsed by default; FAQ is `open`)
+  with a `<summary class="entry__head">` (tag + title + chevron) and an
+  `.entry__body` holding the `.email` block — optional `.email__letterhead`
+  (sender/client logos), an `.email__meta` From/To/Subject header, a `.prose`
+  body, optional `.evidence` (DETAILS) image pairs — and a `.entry__next` button.
 
-To add an entry: clone an existing `<li>`, give it a unique `id`, tag it
-ziad/troll, and add a matching link in the `.toc` list.
+The "Next" button collapses the current entry and opens the next; the last one
+becomes "Back to top." That wiring is automatic (the script keys off DOM order).
+
+To add an entry: clone an existing `<li>`, give it a unique `id`, and tag it
+ziad/troll.
 
 ## Build / run / deploy
 

@@ -12,12 +12,22 @@
   border-bottom: 1px solid $line;
 }
 
-.hero__inner { max-width: 46rem; margin: 0 auto; }
+.hero__inner { max-width: 60rem; margin: 0 auto; }
+
+// logo + wordmark, side by side (icon to the left), centered as a unit
+.hero__lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap; // stacks on very narrow screens
+}
 
 .hero__icon {
-  width: clamp(120px, 22vw, 168px);
+  width: clamp(84px, 12vw, 116px);
   height: auto;
-  margin: 0 auto 1.25rem;
+  flex: none;
+  margin: 0;
 }
 
 .hero__wordmark {
@@ -48,88 +58,13 @@
 }
 
 // =====================================================================
-// Layout shell — table of contents + thread
+// Layout shell — the thread is a single centered column
 // =====================================================================
 .layout {
   width: 100%;
-  max-width: 66rem;
+  max-width: 64rem;
   margin: 0 auto;
   padding: 2.5rem 1.25rem 0;
-}
-
-//@ Wide: table of contents becomes a sticky sidebar beside the thread
-@media (min-width: $bp-wide) {
-  .layout {
-    max-width: 82rem;
-    display: grid;
-    grid-template-columns: 13rem minmax(0, 1fr);
-    column-gap: 3.5rem;
-    align-items: start;
-  }
-
-  .toc {
-    position: sticky;
-    top: 1.5rem;
-    align-self: start;
-    background: transparent;
-    border: 0;
-    padding: 0;
-  }
-}
-
-// =====================================================================
-// Table of contents
-// =====================================================================
-.toc {
-  margin: 0 0 2.5rem;
-  padding: 1.25rem 1.4rem;
-  background: $paper-alt;
-  border: 1px solid $line;
-  border-radius: $radius;
-}
-
-.toc__title {
-  margin: 0 0 0.6rem;
-  font-family: $mono;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: $muted;
-}
-
-.toc__list {
-  margin: 0;
-  padding-left: 1.4rem;
-  list-style: decimal;
-
-  li { margin: 0.12rem 0; }
-
-  a {
-    color: $graphite;
-    text-decoration: none;
-    font-size: 0.92rem;
-    line-height: 1.4;
-
-    &:hover { color: $pink; }
-    &.is-active { color: $brand-red-2; font-weight: 700; }
-  }
-}
-
-.toc__more {
-  margin: 0.9rem 0 0;
-  padding-top: 0.8rem;
-  border-top: 1px solid $line;
-
-  a {
-    font-family: $mono;
-    font-size: 0.76rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: $muted;
-    &:hover { color: $pink; }
-  }
 }
 
 // =====================================================================
